@@ -4,9 +4,11 @@ import Dashboard from "@/pages/Dashboard"
 import "@testing-library/jest-dom"
 
 describe("Dashboard page", () => {
-	it("Should render properly", () => {
+	beforeEach(() => {
 		render(<Dashboard />)
+	})
 
+	it("Should render properly", () => {
 		const header = screen.getByRole("heading")
 		const headerText = "Hello Dashboard"
 
@@ -14,16 +16,12 @@ describe("Dashboard page", () => {
 	})
 
 	it("Should render a disabled button", () => {
-		render(<Dashboard />)
-
 		const button = screen.getByRole("button")
 
 		expect(button).toBeDisabled()
 	})
 
 	it("Should render a P with a data-testid", () => {
-		render(<Dashboard />)
-
 		const pElement = screen.getByTestId("pushingP")
 
 		expect(pElement).toBeInTheDocument()
